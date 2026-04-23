@@ -17,59 +17,38 @@
   --font:'DM Sans',sans-serif;
 }
 body{font-family:var(--font);background:var(--gris);max-width:480px;margin:0 auto;min-height:100vh}
-
-/* HEADER */
 .header{background:var(--verde);padding:16px 20px 14px;color:white;position:sticky;top:0;z-index:20}
 .header-top{display:flex;align-items:center;justify-content:space-between}
 .header h1{font-size:20px;font-weight:500}
 .sem-badge{background:rgba(255,255,255,0.2);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:500}
 .header-sub{font-size:13px;opacity:0.72;margin-top:4px}
-
-/* TABS */
 .tabs{display:flex;background:white;border-bottom:1px solid var(--borde);position:sticky;top:58px;z-index:19}
 .tab{flex:1;padding:12px 6px;text-align:center;font-size:13px;font-weight:500;color:var(--texto-m);cursor:pointer;border-bottom:2px solid transparent;font-family:var(--font);background:none;border-left:none;border-right:none;border-top:none}
 .tab.active{color:var(--verde);border-bottom:2px solid var(--verde)}
-
-/* CONTENT */
 .content{padding:16px;display:none}
 .content.active{display:block}
-
-/* SEARCH */
 .search{display:flex;align-items:center;gap:8px;background:white;border:0.5px solid var(--borde);border-radius:10px;padding:8px 12px;margin-bottom:14px}
 .search input{border:none;background:transparent;font-family:var(--font);font-size:14px;color:var(--texto);flex:1;outline:none}
-
 .sec-label{font-size:11px;font-weight:500;color:var(--texto-m);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
-
-/* PLANT ROWS */
+.tipo-sel{display:flex;gap:6px;margin-bottom:14px}
+.tipo-btn{flex:1;padding:9px 4px;border:0.5px solid var(--borde);border-radius:10px;font-size:12px;font-weight:500;font-family:var(--font);background:white;color:var(--texto-m);cursor:pointer;text-align:center}
+.tipo-btn.active{background:var(--verde-bg);border-color:var(--verde);color:var(--verde)}
 .plant-card{background:white;border-radius:12px;border:0.5px solid var(--borde);padding:14px;margin-bottom:10px}
 .plant-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--verde-claro);flex-shrink:0}
 .dot.rojo{background:#F09595}
+.dot.azul{background:#85B7EB}
 .pname{flex:1;font-size:16px;font-weight:500;color:var(--texto)}
-
-/* INPUT GRID */
-.input-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .input-group{display:flex;flex-direction:column;gap:4px}
 .input-label{font-size:11px;color:var(--texto-m);font-weight:500;text-transform:uppercase;letter-spacing:.05em}
 .qty{width:100%;height:44px;border:0.5px solid var(--borde);border-radius:8px;text-align:center;font-size:18px;font-family:var(--font);color:var(--texto);background:var(--gris);padding:0}
 .qty:focus{outline:none;border-color:var(--verde);background:white}
-
-/* MOTIVO SELECT */
 .motivo-wrap{margin-top:10px}
 .motivo-select{width:100%;height:40px;border:0.5px solid var(--borde);border-radius:8px;font-family:var(--font);font-size:13px;color:var(--texto);background:var(--gris);padding:0 10px;outline:none;appearance:none;-webkit-appearance:none}
 .motivo-select:focus{border-color:var(--verde);background:white}
-
-/* TIPO SELECTOR */
-.tipo-sel{display:flex;gap:8px;margin-bottom:14px}
-.tipo-btn{flex:1;padding:10px;border:0.5px solid var(--borde);border-radius:10px;font-size:13px;font-weight:500;font-family:var(--font);background:white;color:var(--texto-m);cursor:pointer}
-.tipo-btn.active{background:var(--verde-bg);border-color:var(--verde);color:var(--verde)}
-
-/* SAVE BTN */
 .save-btn{width:100%;padding:15px;background:var(--verde);color:white;border:none;border-radius:12px;font-size:16px;font-weight:500;font-family:var(--font);cursor:pointer;margin-top:4px}
 .save-btn.saved{background:#3B6D11}
 .save-btn:disabled{opacity:0.7}
-
-/* RESUMEN */
 .stats{display:flex;gap:8px;margin-bottom:14px}
 .stat{flex:1;border-radius:10px;padding:12px;text-align:center}
 .stat.verde{background:var(--verde-bg)}
@@ -91,16 +70,12 @@ body{font-family:var(--font);background:var(--gris);max-width:480px;margin:0 aut
 .chip.ok{background:#EAF3DE;color:#3B6D11}
 .chip.alerta{background:#FAEEDA;color:#854F0B}
 .chip.exceso{background:#FCEBEB;color:#A32D2D}
-
-/* LOGIN */
 .login-wrap{padding:32px 20px}
 .login-card{background:white;border-radius:16px;border:.5px solid var(--borde);padding:24px;text-align:center}
 .login-card h2{font-size:18px;font-weight:500;margin-bottom:8px}
 .login-card p{font-size:14px;color:var(--texto-m);margin-bottom:20px;line-height:1.5}
 .email-input{width:100%;padding:13px;border:.5px solid var(--borde);border-radius:10px;font-family:var(--font);font-size:15px;background:var(--gris);outline:none;margin-bottom:12px;text-align:center}
 .email-input:focus{border-color:var(--verde);background:white}
-
-/* LOADING / EMPTY */
 .loading{text-align:center;padding:60px 20px;color:var(--texto-m)}
 .empty{text-align:center;padding:32px;color:var(--texto-m);font-size:14px}
 .spinner{font-size:40px;margin-bottom:12px;animation:spin 2s linear infinite;display:inline-block}
@@ -109,7 +84,6 @@ body{font-family:var(--font);background:var(--gris);max-width:480px;margin:0 aut
 </head>
 <body>
 
-<!-- LOGIN -->
 <div id="login-screen">
   <div style="background:var(--verde);padding:56px 20px 28px;text-align:center">
     <div style="font-size:48px;margin-bottom:12px">🌿</div>
@@ -122,14 +96,11 @@ body{font-family:var(--font);background:var(--gris);max-width:480px;margin:0 aut
       <p>Escribe tu correo de Gmail para continuar</p>
       <input class="email-input" type="email" id="email-input" placeholder="tucorreo@gmail.com" autocomplete="email">
       <button class="save-btn" onclick="login()">Entrar</button>
-      <p id="login-error" style="color:#A32D2D;font-size:13px;margin-top:12px;display:none">
-        Correo no autorizado. Contacta a Isa.
-      </p>
+      <p id="login-error" style="color:#A32D2D;font-size:13px;margin-top:12px;display:none">Correo no autorizado. Contacta a Isa.</p>
     </div>
   </div>
 </div>
 
-<!-- APP -->
 <div id="app-screen" style="display:none">
   <div class="header">
     <div class="header-top">
@@ -138,76 +109,75 @@ body{font-family:var(--font);background:var(--gris);max-width:480px;margin:0 aut
     </div>
     <div class="header-sub" id="header-sub">Cargando...</div>
   </div>
-
   <div class="tabs">
     <button class="tab active" id="tab-btn-0" onclick="showTab(0)">Producción</button>
     <button class="tab" id="tab-btn-1" onclick="showTab(1)">Botado</button>
     <button class="tab" id="tab-btn-2" onclick="showTab(2)">Resumen</button>
   </div>
 
-  <!-- TAB 0: PRODUCCIÓN -->
   <div class="content active" id="tab0">
-    <div class="tipo-sel" id="tipo-sel" style="display:none">
-      <button class="tipo-btn active" id="btn-esq" onclick="setTipo('produccion',this)">Esquejes</button>
-      <button class="tipo-btn" id="btn-des" onclick="setTipo('despacho',this)">Despacho B→C</button>
+    <div class="tipo-sel" id="tipo-sel-prod">
+      <button class="tipo-btn active" id="prod-esq" onclick="setTipoProd('esquejes')">Esquejes</button>
+      <button class="tipo-btn" id="prod-sem" onclick="setTipoProd('semillas')">Semilleros</button>
+      <button class="tipo-btn" id="prod-imp" onclick="setTipoProd('importaciones')">Importaciones</button>
     </div>
     <div class="search">
       <span style="color:var(--texto-m);font-size:16px">&#9906;</span>
-      <input type="text" placeholder="Buscar planta..." oninput="filtrar(this.value,'prod')">
+      <input type="text" id="search-prod" placeholder="Buscar planta..." oninput="filtrar(this.value,'prod')">
     </div>
-    <div class="sec-label" id="prod-label">Esta semana</div>
+    <div class="sec-label">Esta semana</div>
     <div id="list-prod"></div>
     <button class="save-btn" id="btn-prod" onclick="guardar('produccion')" style="margin-top:16px">Guardar registro</button>
   </div>
 
-  <!-- TAB 1: BOTADO -->
   <div class="content" id="tab1">
+    <div class="tipo-sel" id="tipo-sel-bot">
+      <button class="tipo-btn active" id="bot-esq" onclick="setTipoBot('esquejes')">Esquejes</button>
+      <button class="tipo-btn" id="bot-sem" onclick="setTipoBot('semillas')">Semilleros</button>
+      <button class="tipo-btn" id="bot-imp" onclick="setTipoBot('importaciones')">Importaciones</button>
+    </div>
     <div class="search">
       <span style="color:var(--texto-m);font-size:16px">&#9906;</span>
-      <input type="text" placeholder="Buscar planta..." oninput="filtrar(this.value,'bot')">
+      <input type="text" id="search-bot" placeholder="Buscar planta..." oninput="filtrar(this.value,'bot')">
     </div>
     <div class="sec-label">Plantas botadas hoy</div>
     <div id="list-bot"></div>
     <button class="save-btn" id="btn-bot" onclick="guardar('botado')" style="margin-top:16px">Guardar botado</button>
   </div>
 
-  <!-- TAB 2: RESUMEN -->
   <div class="content" id="tab2">
     <div class="stats">
-      <div class="stat verde">
-        <div class="stat-val" id="total-prod">0</div>
-        <div class="stat-lbl">Producidas</div>
-      </div>
-      <div class="stat naranja">
-        <div class="stat-val" id="total-bot">0</div>
-        <div class="stat-lbl">Botadas</div>
-      </div>
+      <div class="stat verde"><div class="stat-val" id="total-prod">0</div><div class="stat-lbl">Producidas</div></div>
+      <div class="stat naranja"><div class="stat-val" id="total-bot">0</div><div class="stat-lbl">Botadas</div></div>
     </div>
     <div class="sec-label">Semana actual</div>
     <div id="list-res"><div class="empty">Sin datos aún</div></div>
   </div>
 </div>
 
-<!-- LOADING -->
 <div id="loading-screen" style="display:none" class="loading">
   <div class="spinner">🌱</div>
   <div style="margin-top:8px">Cargando...</div>
 </div>
 
 <script>
-// ── CONFIG ──────────────────────────────────────────────────────────────────
 var API_URL = 'https://script.google.com/macros/s/AKfycbzSvOY51ES9cvoPhZZQz49qt-YaeRKWdtRfAmOZMDTeYaKaNcoaEU-W_mC57goqLUyxxQ/exec';
 
-var MOTIVOS_PROD = ['No aplica','Enfermedad','Plaga','Daño físico','Calidad baja','Otro'];
-var MOTIVOS_SEMI = ['No aplica','Enfermedad','Plaga','Murió en crecimiento','Daño físico','Otro'];
+var PLANTAS = {
+  esquejes: [{"id":"VAR-001","nombre":"Geranio Zonal"},{"id":"VAR-002","nombre":"Geranio Hiedra"},{"id":"VAR-003","nombre":"Geranio Hiedra Jiffi"},{"id":"VAR-004","nombre":"Geranio Rey"},{"id":"VAR-005","nombre":"Geranio Rey Mini"},{"id":"VAR-006","nombre":"Geranio Mini Jiffi"},{"id":"VAR-008","nombre":"Amor Relleno"},{"id":"VAR-009","nombre":"Begonia Big"},{"id":"VAR-010","nombre":"Begonia Rex"},{"id":"VAR-019","nombre":"Calibrachoa Jiffi"},{"id":"VAR-020","nombre":"Calibrachoa Turba"},{"id":"VAR-021","nombre":"Dalia"},{"id":"VAR-022","nombre":"Clavel"},{"id":"VAR-023","nombre":"Clavel Jiffi"},{"id":"VAR-024","nombre":"Diplademia"},{"id":"VAR-025","nombre":"Anturio"},{"id":"VAR-026","nombre":"Lavanda Rosada"},{"id":"VAR-027","nombre":"Lavanda Jiffi"},{"id":"VAR-028","nombre":"Manzanillones"},{"id":"VAR-029","nombre":"Ostios"},{"id":"VAR-033","nombre":"Angelonia"},{"id":"VAR-034","nombre":"Bacopa"},{"id":"VAR-035","nombre":"Heliotropo"},{"id":"VAR-036","nombre":"Salvia Morada"},{"id":"VAR-037","nombre":"Fuxia Grande"},{"id":"VAR-038","nombre":"Fuxia Mini"},{"id":"VAR-039","nombre":"Azulina"},{"id":"VAR-040","nombre":"Aretes de Luz"},{"id":"VAR-041","nombre":"Flor de Papel"},{"id":"VAR-042","nombre":"San José Azul"},{"id":"VAR-043","nombre":"Mosquitos (Lotus)"},{"id":"VAR-051","nombre":"Suculentas"},{"id":"VAR-052","nombre":"Crasula"},{"id":"VAR-053","nombre":"Peperomia"},{"id":"VAR-055","nombre":"Helecho"},{"id":"VAR-056","nombre":"Afelandra"},{"id":"VAR-057","nombre":"Parcenocisus"},{"id":"VAR-058","nombre":"Poinsetia"},{"id":"VAR-059","nombre":"Arrayan"},{"id":"VAR-060","nombre":"Eugenia"},{"id":"VAR-061","nombre":"Chiflera"},{"id":"VAR-062","nombre":"Lotus"},{"id":"VAR-064","nombre":"Hortensias"},{"id":"VAR-067","nombre":"Tortuguitas"},{"id":"VAR-070","nombre":"Ají (esqueje)"},{"id":"VAR-074","nombre":"Kalanchoe"},{"id":"VAR-075","nombre":"Hiedra"},{"id":"VAR-076","nombre":"Geranio Rey"},{"id":"VAR-077","nombre":"Lantana"},{"id":"VAR-078","nombre":"Helichrysum"},{"id":"VAR-079","nombre":"Alambre plateado"},{"id":"VAR-080","nombre":"Duranta morada"},{"id":"VAR-081","nombre":"Vinca"},{"id":"VAR-082","nombre":"Gaura"},{"id":"VAR-083","nombre":"Tradescantia"},{"id":"VAR-084","nombre":"Alcalypha"},{"id":"VAR-085","nombre":"Pescadero"},{"id":"VAR-086","nombre":"Felicia"},{"id":"VAR-087","nombre":"Cerise"},{"id":"VAR-088","nombre":"Jazmín amarillo"},{"id":"VAR-089","nombre":"Haworthia"},{"id":"VAR-090","nombre":"Sedum gris"},{"id":"VAR-091","nombre":"Aeonium"},{"id":"VAR-092","nombre":"Cypress"},{"id":"VAR-093","nombre":"Philodendron"},{"id":"VAR-094","nombre":"Asplenium"},{"id":"VAR-095","nombre":"Beucarnea"},{"id":"VAR-096","nombre":"Achira"},{"id":"VAR-097","nombre":"Jade"},{"id":"VAR-098","nombre":"Peperomia cachito"},{"id":"VAR-099","nombre":"Peperomia redonda"},{"id":"VAR-109","nombre":"Osteospermum"}],
+  semillas: [{"id":"VAR-017","nombre":"Cyclamen"},{"id":"VAR-030","nombre":"Verbena"},{"id":"VAR-031","nombre":"Pensamientos"},{"id":"VAR-032","nombre":"Mini Pensamiento"},{"id":"VAR-044","nombre":"Cosmos"},{"id":"VAR-045","nombre":"Granizo"},{"id":"VAR-046","nombre":"Perritos"},{"id":"VAR-047","nombre":"Tagetes"},{"id":"VAR-048","nombre":"Primula"},{"id":"VAR-049","nombre":"Gazania"},{"id":"VAR-050","nombre":"Cactus"},{"id":"VAR-054","nombre":"Portulaca"},{"id":"VAR-063","nombre":"Tabacos"},{"id":"VAR-065","nombre":"Ciclamen Mini"},{"id":"VAR-066","nombre":"Mariposas"},{"id":"VAR-068","nombre":"Girasol"},{"id":"VAR-069","nombre":"Ají (semilla)"},{"id":"VAR-071","nombre":"Gerbera"},{"id":"VAR-072","nombre":"Gypsofilia"},{"id":"VAR-073","nombre":"Clavelina"},{"id":"VAR-100","nombre":"Coleus"},{"id":"VAR-101","nombre":"Viola"},{"id":"VAR-102","nombre":"Gloxinia"},{"id":"VAR-103","nombre":"Nueva Guinea"},{"id":"VAR-104","nombre":"Violeta africana"},{"id":"VAR-105","nombre":"Romero"},{"id":"VAR-106","nombre":"Stevia"},{"id":"VAR-107","nombre":"Lithops"},{"id":"VAR-108","nombre":"Clivia"},{"id":"VAR-111","nombre":"Salvia hot lips"}],
+  importaciones: [{"id":"VAR-011","nombre":"Begonia Tuberosa"},{"id":"VAR-012","nombre":"Begonia Eliator"},{"id":"VAR-013","nombre":"Conchas (Zantedeschia)"},{"id":"VAR-014","nombre":"Lilium"},{"id":"VAR-015","nombre":"Amarilis"},{"id":"VAR-016","nombre":"Astromelia"},{"id":"VAR-110","nombre":"Alstroemeria"}]
+};
 
-// ── STATE ───────────────────────────────────────────────────────────────────
-var STATE = { email:'', usuario:null, plantas:[], semana:0, tipo:'produccion' };
+var MOTIVOS_ESQ = ['No aplica','Enfermedad','Plaga','Daño físico','Calidad baja','Otro'];
+var MOTIVOS_SEM = ['No aplica','Enfermedad','Plaga','Murió en crecimiento','Daño físico','Otro'];
+var MOTIVOS_IMP = ['No aplica','Enfermedad','Plaga','Daño físico','Llegó en mal estado','Otro'];
+
+var STATE = { email:'', usuario:null, semana:0, tipoProd:'esquejes', tipoBot:'esquejes' };
 var vals = {};
 var valsBot = {};
 var motivosBot = {};
 
-// ── LOGIN ───────────────────────────────────────────────────────────────────
 function login() {
   var email = document.getElementById('email-input').value.trim().toLowerCase();
   if (!email) return;
@@ -226,54 +196,55 @@ function onData(data) {
   }
   STATE.email   = data.email;
   STATE.usuario = data.usuario;
-  STATE.plantas = data.plantas;
   STATE.semana  = data.semana;
   vals = {}; valsBot = {}; motivosBot = {};
-
-  document.getElementById('sem-badge').textContent   = 'Sem ' + data.semana + ' · ' + data.anio;
-  document.getElementById('header-sub').textContent  = data.usuario.nombre + ' — Inv ' + data.usuario.inv;
-
-  if (data.usuario.rol === 'esquejes') {
-    document.getElementById('tipo-sel').style.display = 'flex';
-  }
+  document.getElementById('sem-badge').textContent  = 'Sem ' + data.semana + ' · ' + data.anio;
+  document.getElementById('header-sub').textContent = data.usuario.nombre + ' — Inv ' + data.usuario.inv;
   if (data.usuario.rol === 'ventas') {
     document.getElementById('tab-btn-0').textContent = 'Ventas';
     document.getElementById('tab-btn-1').textContent = 'Botado';
-    document.getElementById('prod-label').textContent = 'Ventas esta semana';
+    document.getElementById('tipo-sel-prod').style.display = 'none';
+    document.getElementById('tipo-sel-bot').style.display = 'none';
   }
-
-  renderLists(data.plantas);
+  renderProd(PLANTAS[STATE.tipoProd]);
+  renderBot(PLANTAS[STATE.tipoBot]);
   renderResumen(data.resumen);
   showScreen('app');
 }
 
 function onError() {
   showScreen('login');
-  alert('Error de conexión. Verifica tu internet e intenta de nuevo.');
+  alert('Error de conexión. Verifica tu internet.');
 }
 
-// ── RENDER ──────────────────────────────────────────────────────────────────
-function getMotivos() {
-  return STATE.usuario && STATE.usuario.inv === 'A' ? MOTIVOS_SEMI : MOTIVOS_PROD;
+function getMotivos(tipo) {
+  if (tipo === 'semillas') return MOTIVOS_SEM;
+  if (tipo === 'importaciones') return MOTIVOS_IMP;
+  return MOTIVOS_ESQ;
 }
 
-function buildProdCard(p) {
+function getDotClass(tipo) {
+  if (tipo === 'semillas') return 'dot';
+  if (tipo === 'importaciones') return 'dot azul';
+  return 'dot';
+}
+
+function buildProdCard(p, tipo) {
   var isVentas = STATE.usuario && STATE.usuario.rol === 'ventas';
   var lbl = isVentas ? 'Vendidas' : 'Producidas';
   var val = vals[p.id] || '';
   return '<div class="plant-card">' +
-    '<div class="plant-header"><div class="dot"></div><div class="pname">' + p.nombre + '</div></div>' +
-    '<div class="input-grid">' +
+    '<div class="plant-header"><div class="' + getDotClass(tipo) + '"></div><div class="pname">' + p.nombre + '</div></div>' +
     '<div class="input-group"><div class="input-label">' + lbl + '</div>' +
     '<input class="qty" type="number" min="0" placeholder="0" inputmode="numeric" value="' + val + '" ' +
     'oninput="vals[\'' + p.id + '\']=this.value"></div>' +
-    '</div></div>';
+    '</div>';
 }
 
-function buildBotCard(p) {
+function buildBotCard(p, tipo) {
   var val    = valsBot[p.id] || '';
   var motivo = motivosBot[p.id] || 'No aplica';
-  var motivos = getMotivos();
+  var motivos = getMotivos(tipo);
   var options = '';
   for (var i = 0; i < motivos.length; i++) {
     var sel = motivos[i] === motivo ? ' selected' : '';
@@ -281,42 +252,37 @@ function buildBotCard(p) {
   }
   return '<div class="plant-card">' +
     '<div class="plant-header"><div class="dot rojo"></div><div class="pname">' + p.nombre + '</div></div>' +
-    '<div class="input-grid">' +
     '<div class="input-group"><div class="input-label">Cantidad botada</div>' +
     '<input class="qty" type="number" min="0" placeholder="0" inputmode="numeric" value="' + val + '" ' +
     'oninput="valsBot[\'' + p.id + '\']=this.value"></div>' +
-    '</div>' +
     '<div class="motivo-wrap"><div class="input-label" style="margin-bottom:4px">Motivo</div>' +
     '<select class="motivo-select" onchange="motivosBot[\'' + p.id + '\']=this.value">' + options + '</select>' +
     '</div></div>';
 }
 
-function renderLists(plantas) {
-  var htmlProd = '';
-  var htmlBot  = '';
-  for (var i = 0; i < plantas.length; i++) {
-    htmlProd += buildProdCard(plantas[i]);
-    htmlBot  += buildBotCard(plantas[i]);
-  }
-  document.getElementById('list-prod').innerHTML = htmlProd || '<div class="empty">Sin plantas</div>';
-  document.getElementById('list-bot').innerHTML  = htmlBot  || '<div class="empty">Sin plantas</div>';
+function renderProd(plantas) {
+  var html = '';
+  for (var i = 0; i < plantas.length; i++) html += buildProdCard(plantas[i], STATE.tipoProd);
+  document.getElementById('list-prod').innerHTML = html || '<div class="empty">Sin plantas</div>';
+}
+
+function renderBot(plantas) {
+  var html = '';
+  for (var i = 0; i < plantas.length; i++) html += buildBotCard(plantas[i], STATE.tipoBot);
+  document.getElementById('list-bot').innerHTML = html || '<div class="empty">Sin plantas</div>';
 }
 
 function renderResumen(resumen) {
   if (!resumen || !resumen.length) return;
   var totProd = 0, totBot = 0;
-  for (var i = 0; i < resumen.length; i++) {
-    totProd += resumen[i].producidas;
-    totBot  += resumen[i].botadas;
-  }
+  for (var i = 0; i < resumen.length; i++) { totProd += resumen[i].producidas; totBot += resumen[i].botadas; }
   document.getElementById('total-prod').textContent = totProd;
   document.getElementById('total-bot').textContent  = totBot;
   var labels = { ok:'✓ OK', alerta:'⚠ Revisar', exceso:'↑ Exceso' };
   var html = '';
   for (var j = 0; j < resumen.length; j++) {
     var r = resumen[j];
-    html += '<div class="res-row">' +
-      '<div class="res-nombre">' + r.nombre + '</div>' +
+    html += '<div class="res-row"><div class="res-nombre">' + r.nombre + '</div>' +
       '<div class="res-nums">' +
       '<div class="nc"><div class="nv">' + r.producidas + '</div><div class="nl">prod.</div></div>' +
       '<div class="nc"><div class="nv">' + r.botadas + '</div><div class="nl">bot.</div></div>' +
@@ -326,53 +292,51 @@ function renderResumen(resumen) {
   document.getElementById('list-res').innerHTML = html;
 }
 
-// ── FILTRAR ──────────────────────────────────────────────────────────────────
+function setTipoProd(tipo) {
+  STATE.tipoProd = tipo;
+  document.getElementById('prod-esq').classList.toggle('active', tipo === 'esquejes');
+  document.getElementById('prod-sem').classList.toggle('active', tipo === 'semillas');
+  document.getElementById('prod-imp').classList.toggle('active', tipo === 'importaciones');
+  document.getElementById('search-prod').value = '';
+  renderProd(PLANTAS[tipo]);
+}
+
+function setTipoBot(tipo) {
+  STATE.tipoBot = tipo;
+  document.getElementById('bot-esq').classList.toggle('active', tipo === 'esquejes');
+  document.getElementById('bot-sem').classList.toggle('active', tipo === 'semillas');
+  document.getElementById('bot-imp').classList.toggle('active', tipo === 'importaciones');
+  document.getElementById('search-bot').value = '';
+  renderBot(PLANTAS[tipo]);
+}
+
 function filtrar(v, lista) {
-  var plantas = STATE.plantas;
+  var tipo   = lista === 'prod' ? STATE.tipoProd : STATE.tipoBot;
+  var plantas = PLANTAS[tipo];
   if (v) {
     var filtered = [];
     for (var i = 0; i < plantas.length; i++) {
-      if (plantas[i].nombre.toLowerCase().indexOf(v.toLowerCase()) !== -1) {
-        filtered.push(plantas[i]);
-      }
+      if (plantas[i].nombre.toLowerCase().indexOf(v.toLowerCase()) !== -1) filtered.push(plantas[i]);
     }
     plantas = filtered;
   }
-  var html = '';
-  for (var j = 0; j < plantas.length; j++) {
-    html += lista === 'prod' ? buildProdCard(plantas[j]) : buildBotCard(plantas[j]);
-  }
-  document.getElementById(lista === 'prod' ? 'list-prod' : 'list-bot').innerHTML =
-    html || '<div class="empty">Sin resultados</div>';
+  if (lista === 'prod') renderProd(plantas);
+  else renderBot(plantas);
 }
 
-// ── GUARDAR ──────────────────────────────────────────────────────────────────
 function guardar(tipo) {
-  var entries = [];
-  var plantas = STATE.plantas;
+  var tipoPlanta = tipo === 'produccion' ? STATE.tipoProd : STATE.tipoBot;
+  var plantas    = PLANTAS[tipoPlanta];
+  var entries    = [];
 
   for (var i = 0; i < plantas.length; i++) {
     var p = plantas[i];
     if (tipo === 'botado') {
       var q = parseInt(valsBot[p.id]) || 0;
-      if (q > 0) {
-        entries.push({
-          variedad_id:    p.id,
-          variedad_nombre: p.nombre,
-          qty_botada:     q,
-          motivo_botado:  motivosBot[p.id] || 'No aplica'
-        });
-      }
+      if (q > 0) entries.push({ variedad_id: p.id, variedad_nombre: p.nombre, qty_botada: q, motivo_botado: motivosBot[p.id] || 'No aplica' });
     } else {
       var qp = parseInt(vals[p.id]) || 0;
-      if (qp > 0) {
-        entries.push({
-          variedad_id:    p.id,
-          variedad_nombre: p.nombre,
-          qty_producida:  qp,
-          qty_vendida:    qp
-        });
-      }
+      if (qp > 0) entries.push({ variedad_id: p.id, variedad_nombre: p.nombre, qty_producida: qp, qty_vendida: qp });
     }
   }
 
@@ -383,8 +347,7 @@ function guardar(tipo) {
   btn.textContent = 'Guardando...';
   btn.disabled    = true;
 
-  var tipoFinal = STATE.usuario.rol === 'ventas' ? 'venta' :
-    (STATE.tipo === 'despacho' ? 'despacho' : (tipo === 'botado' ? 'botado' : 'produccion'));
+  var tipoFinal = STATE.usuario.rol === 'ventas' ? 'venta' : (tipo === 'botado' ? 'botado' : 'produccion');
 
   fetch(API_URL, {
     method:  'POST',
@@ -396,8 +359,8 @@ function guardar(tipo) {
     if (result.ok) {
       btn.textContent = '✓ Guardado';
       btn.classList.add('saved');
-      if (tipo === 'botado') { valsBot = {}; motivosBot = {}; } else { vals = {}; }
-      renderLists(STATE.plantas);
+      if (tipo === 'botado') { valsBot = {}; motivosBot = {}; renderBot(PLANTAS[STATE.tipoBot]); }
+      else { vals = {}; renderProd(PLANTAS[STATE.tipoProd]); }
       setTimeout(function() {
         btn.textContent = tipo === 'botado' ? 'Guardar botado' : 'Guardar registro';
         btn.classList.remove('saved');
@@ -405,27 +368,20 @@ function guardar(tipo) {
       }, 2000);
     } else {
       btn.textContent = 'Error — reintentar';
-      btn.disabled    = false;
+      btn.disabled = false;
     }
   })
   .catch(function() {
     btn.textContent = 'Error — reintentar';
-    btn.disabled    = false;
+    btn.disabled = false;
   });
 }
 
-// ── UI HELPERS ───────────────────────────────────────────────────────────────
 function showTab(i) {
   for (var j = 0; j < 3; j++) {
     document.getElementById('tab' + j).classList.toggle('active', i === j);
     document.getElementById('tab-btn-' + j).classList.toggle('active', i === j);
   }
-}
-
-function setTipo(t) {
-  STATE.tipo = t;
-  document.getElementById('btn-esq').classList.toggle('active', t === 'produccion');
-  document.getElementById('btn-des').classList.toggle('active', t === 'despacho');
 }
 
 function showScreen(s) {
