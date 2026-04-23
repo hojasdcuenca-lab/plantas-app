@@ -131,11 +131,6 @@ body{font-family:var(--font);background:var(--gris);max-width:480px;margin:0 aut
   </div>
 
   <div class="content" id="tab1">
-    <div class="tipo-sel" id="tipo-sel-bot">
-      <button class="tipo-btn active" id="bot-esq" onclick="setTipoBot('esquejes')">Esquejes</button>
-      <button class="tipo-btn" id="bot-sem" onclick="setTipoBot('semillas')">Semilleros</button>
-      <button class="tipo-btn" id="bot-imp" onclick="setTipoBot('importaciones')">Importaciones</button>
-    </div>
     <div class="search">
       <span style="color:var(--texto-m);font-size:16px">&#9906;</span>
       <input type="text" id="search-bot" placeholder="Buscar planta..." oninput="filtrar(this.value,'bot')">
@@ -166,6 +161,7 @@ var API_URL = 'https://script.google.com/macros/s/AKfycbzSvOY51ES9cvoPhZZQz49qt-
 var PLANTAS = {
   esquejes: [{"id":"VAR-001","nombre":"Geranio Zonal"},{"id":"VAR-002","nombre":"Geranio Hiedra"},{"id":"VAR-003","nombre":"Geranio Hiedra Jiffi"},{"id":"VAR-004","nombre":"Geranio Rey"},{"id":"VAR-005","nombre":"Geranio Rey Mini"},{"id":"VAR-006","nombre":"Geranio Mini Jiffi"},{"id":"VAR-008","nombre":"Amor Relleno"},{"id":"VAR-009","nombre":"Begonia Big"},{"id":"VAR-010","nombre":"Begonia Rex"},{"id":"VAR-019","nombre":"Calibrachoa Jiffi"},{"id":"VAR-020","nombre":"Calibrachoa Turba"},{"id":"VAR-021","nombre":"Dalia"},{"id":"VAR-022","nombre":"Clavel"},{"id":"VAR-023","nombre":"Clavel Jiffi"},{"id":"VAR-024","nombre":"Diplademia"},{"id":"VAR-025","nombre":"Anturio"},{"id":"VAR-026","nombre":"Lavanda Rosada"},{"id":"VAR-027","nombre":"Lavanda Jiffi"},{"id":"VAR-028","nombre":"Manzanillones"},{"id":"VAR-029","nombre":"Ostios"},{"id":"VAR-033","nombre":"Angelonia"},{"id":"VAR-034","nombre":"Bacopa"},{"id":"VAR-035","nombre":"Heliotropo"},{"id":"VAR-036","nombre":"Salvia Morada"},{"id":"VAR-037","nombre":"Fuxia Grande"},{"id":"VAR-038","nombre":"Fuxia Mini"},{"id":"VAR-039","nombre":"Azulina"},{"id":"VAR-040","nombre":"Aretes de Luz"},{"id":"VAR-041","nombre":"Flor de Papel"},{"id":"VAR-042","nombre":"San José Azul"},{"id":"VAR-043","nombre":"Mosquitos (Lotus)"},{"id":"VAR-051","nombre":"Suculentas"},{"id":"VAR-052","nombre":"Crasula"},{"id":"VAR-053","nombre":"Peperomia"},{"id":"VAR-055","nombre":"Helecho"},{"id":"VAR-056","nombre":"Afelandra"},{"id":"VAR-057","nombre":"Parcenocisus"},{"id":"VAR-058","nombre":"Poinsetia"},{"id":"VAR-059","nombre":"Arrayan"},{"id":"VAR-060","nombre":"Eugenia"},{"id":"VAR-061","nombre":"Chiflera"},{"id":"VAR-062","nombre":"Lotus"},{"id":"VAR-064","nombre":"Hortensias"},{"id":"VAR-067","nombre":"Tortuguitas"},{"id":"VAR-070","nombre":"Ají (esqueje)"},{"id":"VAR-074","nombre":"Kalanchoe"},{"id":"VAR-075","nombre":"Hiedra"},{"id":"VAR-076","nombre":"Geranio Rey"},{"id":"VAR-077","nombre":"Lantana"},{"id":"VAR-078","nombre":"Helichrysum"},{"id":"VAR-079","nombre":"Alambre plateado"},{"id":"VAR-080","nombre":"Duranta morada"},{"id":"VAR-081","nombre":"Vinca"},{"id":"VAR-082","nombre":"Gaura"},{"id":"VAR-083","nombre":"Tradescantia"},{"id":"VAR-084","nombre":"Alcalypha"},{"id":"VAR-085","nombre":"Pescadero"},{"id":"VAR-086","nombre":"Felicia"},{"id":"VAR-087","nombre":"Cerise"},{"id":"VAR-088","nombre":"Jazmín amarillo"},{"id":"VAR-089","nombre":"Haworthia"},{"id":"VAR-090","nombre":"Sedum gris"},{"id":"VAR-091","nombre":"Aeonium"},{"id":"VAR-092","nombre":"Cypress"},{"id":"VAR-093","nombre":"Philodendron"},{"id":"VAR-094","nombre":"Asplenium"},{"id":"VAR-095","nombre":"Beucarnea"},{"id":"VAR-096","nombre":"Achira"},{"id":"VAR-097","nombre":"Jade"},{"id":"VAR-098","nombre":"Peperomia cachito"},{"id":"VAR-099","nombre":"Peperomia redonda"},{"id":"VAR-109","nombre":"Osteospermum"}],
   semillas: [{"id":"VAR-017","nombre":"Cyclamen"},{"id":"VAR-030","nombre":"Verbena"},{"id":"VAR-031","nombre":"Pensamientos"},{"id":"VAR-032","nombre":"Mini Pensamiento"},{"id":"VAR-044","nombre":"Cosmos"},{"id":"VAR-045","nombre":"Granizo"},{"id":"VAR-046","nombre":"Perritos"},{"id":"VAR-047","nombre":"Tagetes"},{"id":"VAR-048","nombre":"Primula"},{"id":"VAR-049","nombre":"Gazania"},{"id":"VAR-050","nombre":"Cactus"},{"id":"VAR-054","nombre":"Portulaca"},{"id":"VAR-063","nombre":"Tabacos"},{"id":"VAR-065","nombre":"Ciclamen Mini"},{"id":"VAR-066","nombre":"Mariposas"},{"id":"VAR-068","nombre":"Girasol"},{"id":"VAR-069","nombre":"Ají (semilla)"},{"id":"VAR-071","nombre":"Gerbera"},{"id":"VAR-072","nombre":"Gypsofilia"},{"id":"VAR-073","nombre":"Clavelina"},{"id":"VAR-100","nombre":"Coleus"},{"id":"VAR-101","nombre":"Viola"},{"id":"VAR-102","nombre":"Gloxinia"},{"id":"VAR-103","nombre":"Nueva Guinea"},{"id":"VAR-104","nombre":"Violeta africana"},{"id":"VAR-105","nombre":"Romero"},{"id":"VAR-106","nombre":"Stevia"},{"id":"VAR-107","nombre":"Lithops"},{"id":"VAR-108","nombre":"Clivia"},{"id":"VAR-111","nombre":"Salvia hot lips"}],
+  todas: [{"id":"VAR-096","nombre":"Achira"},{"id":"VAR-091","nombre":"Aeonium"},{"id":"VAR-056","nombre":"Afelandra"},{"id":"VAR-070","nombre":"Ají (esqueje)"},{"id":"VAR-069","nombre":"Ají (semilla)"},{"id":"VAR-079","nombre":"Alambre plateado"},{"id":"VAR-084","nombre":"Alcalypha"},{"id":"VAR-110","nombre":"Alstroemeria"},{"id":"VAR-015","nombre":"Amarilis"},{"id":"VAR-007","nombre":"Amor Nueva Guinea"},{"id":"VAR-008","nombre":"Amor Relleno"},{"id":"VAR-033","nombre":"Angelonia"},{"id":"VAR-025","nombre":"Anturio"},{"id":"VAR-040","nombre":"Aretes de Luz"},{"id":"VAR-059","nombre":"Arrayan"},{"id":"VAR-094","nombre":"Asplenium"},{"id":"VAR-016","nombre":"Astromelia"},{"id":"VAR-039","nombre":"Azulina"},{"id":"VAR-034","nombre":"Bacopa"},{"id":"VAR-009","nombre":"Begonia Big"},{"id":"VAR-012","nombre":"Begonia Eliator"},{"id":"VAR-010","nombre":"Begonia Rex"},{"id":"VAR-011","nombre":"Begonia Tuberosa"},{"id":"VAR-095","nombre":"Beucarnea"},{"id":"VAR-050","nombre":"Cactus"},{"id":"VAR-019","nombre":"Calibrachoa Jiffi"},{"id":"VAR-020","nombre":"Calibrachoa Turba"},{"id":"VAR-087","nombre":"Cerise"},{"id":"VAR-061","nombre":"Chiflera"},{"id":"VAR-065","nombre":"Ciclamen Mini"},{"id":"VAR-022","nombre":"Clavel"},{"id":"VAR-023","nombre":"Clavel Jiffi"},{"id":"VAR-073","nombre":"Clavelina"},{"id":"VAR-108","nombre":"Clivia"},{"id":"VAR-100","nombre":"Coleus"},{"id":"VAR-013","nombre":"Conchas (Zantedeschia)"},{"id":"VAR-044","nombre":"Cosmos"},{"id":"VAR-052","nombre":"Crasula"},{"id":"VAR-017","nombre":"Cyclamen"},{"id":"VAR-092","nombre":"Cypress"},{"id":"VAR-021","nombre":"Dalia"},{"id":"VAR-024","nombre":"Diplademia"},{"id":"VAR-080","nombre":"Duranta morada"},{"id":"VAR-060","nombre":"Eugenia"},{"id":"VAR-086","nombre":"Felicia"},{"id":"VAR-041","nombre":"Flor de Papel"},{"id":"VAR-037","nombre":"Fuxia Grande"},{"id":"VAR-038","nombre":"Fuxia Mini"},{"id":"VAR-082","nombre":"Gaura"},{"id":"VAR-049","nombre":"Gazania"},{"id":"VAR-002","nombre":"Geranio Hiedra"},{"id":"VAR-003","nombre":"Geranio Hiedra Jiffi"},{"id":"VAR-006","nombre":"Geranio Mini Jiffi"},{"id":"VAR-004","nombre":"Geranio Rey"},{"id":"VAR-005","nombre":"Geranio Rey Mini"},{"id":"VAR-001","nombre":"Geranio Zonal"},{"id":"VAR-071","nombre":"Gerbera"},{"id":"VAR-068","nombre":"Girasol"},{"id":"VAR-102","nombre":"Gloxinia"},{"id":"VAR-045","nombre":"Granizo"},{"id":"VAR-072","nombre":"Gypsofilia"},{"id":"VAR-089","nombre":"Haworthia"},{"id":"VAR-055","nombre":"Helecho"},{"id":"VAR-078","nombre":"Helichrysum"},{"id":"VAR-035","nombre":"Heliotropo"},{"id":"VAR-075","nombre":"Hiedra"},{"id":"VAR-064","nombre":"Hortensias"},{"id":"VAR-097","nombre":"Jade"},{"id":"VAR-088","nombre":"Jazmín amarillo"},{"id":"VAR-074","nombre":"Kalanchoe"},{"id":"VAR-077","nombre":"Lantana"},{"id":"VAR-027","nombre":"Lavanda Jiffi"},{"id":"VAR-026","nombre":"Lavanda Rosada"},{"id":"VAR-014","nombre":"Lilium"},{"id":"VAR-107","nombre":"Lithops"},{"id":"VAR-062","nombre":"Lotus"},{"id":"VAR-028","nombre":"Manzanillones"},{"id":"VAR-066","nombre":"Mariposas"},{"id":"VAR-032","nombre":"Mini Pensamiento"},{"id":"VAR-043","nombre":"Mosquitos (Lotus)"},{"id":"VAR-103","nombre":"Nueva Guinea"},{"id":"VAR-109","nombre":"Osteospermum"},{"id":"VAR-029","nombre":"Ostios"},{"id":"VAR-057","nombre":"Parcenocisus"},{"id":"VAR-031","nombre":"Pensamientos"},{"id":"VAR-053","nombre":"Peperomia"},{"id":"VAR-098","nombre":"Peperomia cachito"},{"id":"VAR-099","nombre":"Peperomia redonda"},{"id":"VAR-046","nombre":"Perritos"},{"id":"VAR-085","nombre":"Pescadero"},{"id":"VAR-018","nombre":"Petunia"},{"id":"VAR-093","nombre":"Philodendron"},{"id":"VAR-058","nombre":"Poinsetia"},{"id":"VAR-054","nombre":"Portulaca"},{"id":"VAR-048","nombre":"Primula"},{"id":"VAR-105","nombre":"Romero"},{"id":"VAR-036","nombre":"Salvia Morada"},{"id":"VAR-111","nombre":"Salvia hot lips"},{"id":"VAR-042","nombre":"San José Azul"},{"id":"VAR-090","nombre":"Sedum gris"},{"id":"VAR-106","nombre":"Stevia"},{"id":"VAR-051","nombre":"Suculentas"},{"id":"VAR-063","nombre":"Tabacos"},{"id":"VAR-047","nombre":"Tagetes"},{"id":"VAR-067","nombre":"Tortuguitas"},{"id":"VAR-083","nombre":"Tradescantia"},{"id":"VAR-030","nombre":"Verbena"},{"id":"VAR-081","nombre":"Vinca"},{"id":"VAR-101","nombre":"Viola"},{"id":"VAR-104","nombre":"Violeta africana"}],
   importaciones: [{"id":"VAR-011","nombre":"Begonia Tuberosa"},{"id":"VAR-012","nombre":"Begonia Eliator"},{"id":"VAR-013","nombre":"Conchas (Zantedeschia)"},{"id":"VAR-014","nombre":"Lilium"},{"id":"VAR-015","nombre":"Amarilis"},{"id":"VAR-016","nombre":"Astromelia"},{"id":"VAR-110","nombre":"Alstroemeria"}]
 };
 
@@ -207,7 +203,7 @@ function onData(data) {
     document.getElementById('tipo-sel-bot').style.display = 'none';
   }
   renderProd(PLANTAS[STATE.tipoProd]);
-  renderBot(PLANTAS[STATE.tipoBot]);
+  renderBotAll();
   renderResumen(data.resumen);
   showScreen('app');
 }
@@ -266,6 +262,7 @@ function renderProd(plantas) {
   document.getElementById('list-prod').innerHTML = html || '<div class="empty">Sin plantas</div>';
 }
 
+function renderBotAll() { renderBot(PLANTAS.todas); }
 function renderBot(plantas) {
   var html = '';
   for (var i = 0; i < plantas.length; i++) html += buildBotCard(plantas[i], STATE.tipoBot);
@@ -311,7 +308,7 @@ function setTipoBot(tipo) {
 }
 
 function filtrar(v, lista) {
-  var tipo   = lista === 'prod' ? STATE.tipoProd : STATE.tipoBot;
+  var tipo    = lista === 'prod' ? STATE.tipoProd : 'todas';
   var plantas = PLANTAS[tipo];
   if (v) {
     var filtered = [];
@@ -325,7 +322,7 @@ function filtrar(v, lista) {
 }
 
 function guardar(tipo) {
-  var tipoPlanta = tipo === 'produccion' ? STATE.tipoProd : STATE.tipoBot;
+  var tipoPlanta = tipo === 'produccion' ? STATE.tipoProd : 'todas';
   var plantas    = PLANTAS[tipoPlanta];
   var entries    = [];
 
@@ -359,7 +356,7 @@ function guardar(tipo) {
     if (result.ok) {
       btn.textContent = '✓ Guardado';
       btn.classList.add('saved');
-      if (tipo === 'botado') { valsBot = {}; motivosBot = {}; renderBot(PLANTAS[STATE.tipoBot]); }
+      if (tipo === 'botado') { valsBot = {}; motivosBot = {}; renderBotAll(); }
       else { vals = {}; renderProd(PLANTAS[STATE.tipoProd]); }
       setTimeout(function() {
         btn.textContent = tipo === 'botado' ? 'Guardar botado' : 'Guardar registro';
