@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#2D5A27">
+<title>Invernadero</title>
+<link rel="manifest" href="manifest.json">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --verde:#2D5A27;--verde-med:#3B6D11;--verde-bg:#EAF3DE;--verde-claro:#C0DD97;
+  --gris:#F7F6F2;--borde:rgba(0,0,0,0.1);--texto:#1a1a1a;--texto-m:#666;
+  --font:'DM Sans',sans-serif;
+}
+body{font-family:var(--font);background:var(--gris);max-width:480px;margin:0 auto;min-height:100vh}
+
+/* HEADER */
+.header{background:var(--verde);padding:16px 20px 14px;color:white;position:sticky;top:0;z-index:20}
+.header-top{display:flex;align-items:center;justify-content:space-between}
+.header h1{font-size:20px;font-weight:500}
+.sem-badge{background:rgba(255,255,255,0.2);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:500}
+.header-sub{font-size:13px;opacity:0.72;margin-top:4px}
+
+/* TABS */
+.tabs{display:flex;background:white;border-bottom:1px solid var(--borde);position:sticky;top:58px;z-index:19}
+.tab{flex:1;padding:12px 6px;text-align:center;font-size:13px;font-weight:500;color:var(--texto-m);cursor:pointer;border-bottom:2px solid transparent;font-family:var(--font);background:none;border-left:none;border-right:none;border-top:none}
+.tab.active{color:var(--verde);border-bottom:2px solid var(--verde)}
+
+/* CONTENT */
+.content{padding:16px;display:none}
+.content.active{display:block}
+
+/* SEARCH */
+.search{display:flex;align-items:center;gap:8px;background:white;border:0.5px solid var(--borde);border-radius:10px;padding:8px 12px;margin-bottom:14px}
+.search input{border:none;background:transparent;font-family:var(--font);font-size:14px;color:var(--texto);flex:1;outline:none}
+
+.sec-label{font-size:11px;font-weight:500;color:var(--texto-m);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+
+/* PLANT ROWS */
+.plant-card{background:white;border-radius:12px;border:0.5px solid var(--borde);padding:14px;margin-bottom:10px}
+.plant-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--verde-claro);flex-shrink:0}
+.dot.rojo{background:#F09595}
+.pname{flex:1;font-size:16px;font-weight:500;color:var(--texto)}
+
+/* INPUT GRID */
+.input-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.input-group{display:flex;flex-direction:column;gap:4px}
+.input-label{font-size:11px;color:var(--texto-m);font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+.qty{width:100%;height:44px;border:0.5px solid var(--borde);border-radius:8px;text-align:center;font-size:18px;font-family:var(--font);color:var(--texto);background:var(--gris);padding:0}
+.qty:focus{outline:none;border-color:var(--verde);background:white}
+
+/* MOTIVO SELECT */
+.motivo-wrap{margin-top:10px}
+.motivo-select{width:100%;height:40px;border:0.5px solid var(--borde);border-radius:8px;font-family:var(--font);font-size:13px;color:var(--texto);background:var(--gris);padding:0 10px;outline:none;appearance:none;-webkit-appearance:none}
+.motivo-select:focus{border-color:var(--verde);background:white}
+
+/* TIPO SELECTOR */
+.tipo-sel{display:flex;gap:8px;margin-bottom:14px}
+.tipo-btn{flex:1;padding:10px;border:0.5px solid var(--borde);border-radius:10px;font-size:13px;font-weight:500;font-family:var(--font);background:white;color:var(--texto-m);cursor:pointer}
+.tipo-btn.active{background:var(--verde-bg);border-color:var(--verde);color:var(--verde)}
+
+/* SAVE BTN */
+.save-btn{width:100%;padding:15px;background:var(--verde);color:white;border:none;border-radius:12px;font-size:16px;font-weight:500;font-family:var(--font);cursor:pointer;margin-top:4px}
+.save-btn.saved{background:#3B6D11}
+.save-btn:disabled{opacity:0.7}
+
+/* RESUMEN */
+.stats{display:flex;gap:8px;margin-bottom:14px}
+.stat{flex:1;border-radius:10px;padding:12px;text-align:center}
+.stat.verde{background:var(--verde-bg)}
+.stat.naranja{background:#FAEEDA}
+.stat-val{font-size:22px;font-weight:500}
+.stat.verde .stat-val{color:var(--verde)}
+.stat.naranja .stat-val{color:#854F0B}
+.stat-lbl{font-size:11px;margin-top:2px}
+.stat.verde .stat-lbl{color:var(--verde-med)}
+.stat.naranja .stat-lbl{color:#854F0B}
+.res-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:.5px solid var(--borde)}
+.res-row:last-child{border-bottom:none}
+.res-nombre{font-size:14px;color:var(--texto);flex:1}
+.res-nums{display:flex;gap:10px;align-items:center}
+.nc{text-align:right}
+.nv{font-size:14px;font-weight:500;color:var(--texto)}
+.nl{font-size:10px;color:var(--texto-m)}
+.chip{font-size:11px;padding:3px 8px;border-radius:20px;font-weight:500;white-space:nowrap}
+.chip.ok{background:#EAF3DE;color:#3B6D11}
+.chip.alerta{background:#FAEEDA;color:#854F0B}
+.chip.exceso{background:#FCEBEB;color:#A32D2D}
+
+/* LOGIN */
+.login-wrap{padding:32px 20px}
+.login-card{background:white;border-radius:16px;border:.5px solid var(--borde);padding:24px;text-align:center}
+.login-card h2{font-size:18px;font-weight:500;margin-bottom:8px}
+.login-card p{font-size:14px;color:var(--texto-m);margin-bottom:20px;line-height:1.5}
+.email-input{width:100%;padding:13px;border:.5px solid var(--borde);border-radius:10px;font-family:var(--font);font-size:15px;background:var(--gris);outline:none;margin-bottom:12px;text-align:center}
+.email-input:focus{border-color:var(--verde);background:white}
+
+/* LOADING / EMPTY */
+.loading{text-align:center;padding:60px 20px;color:var(--texto-m)}
+.empty{text-align:center;padding:32px;color:var(--texto-m);font-size:14px}
+.spinner{font-size:40px;margin-bottom:12px;animation:spin 2s linear infinite;display:inline-block}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div style="background:var(--verde);padding:56px 20px 28px;text-align:center">
+    <div style="font-size:48px;margin-bottom:12px">🌿</div>
+    <h1 style="color:white;font-size:26px;font-weight:500;letter-spacing:-0.3px">Invernadero</h1>
+    <p style="color:rgba(255,255,255,0.65);font-size:14px;margin-top:6px">Sistema de producción</p>
+  </div>
+  <div class="login-wrap">
+    <div class="login-card">
+      <h2>Ingresar</h2>
+      <p>Escribe tu correo de Gmail para continuar</p>
+      <input class="email-input" type="email" id="email-input" placeholder="tucorreo@gmail.com" autocomplete="email">
+      <button class="save-btn" onclick="login()">Entrar</button>
+      <p id="login-error" style="color:#A32D2D;font-size:13px;margin-top:12px;display:none">
+        Correo no autorizado. Contacta a Isa.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app-screen" style="display:none">
+  <div class="header">
+    <div class="header-top">
+      <h1>🌿 Invernadero</h1>
+      <span class="sem-badge" id="sem-badge">Sem —</span>
+    </div>
+    <div class="header-sub" id="header-sub">Cargando...</div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" id="tab-btn-0" onclick="showTab(0)">Producción</button>
+    <button class="tab" id="tab-btn-1" onclick="showTab(1)">Botado</button>
+    <button class="tab" id="tab-btn-2" onclick="showTab(2)">Resumen</button>
+  </div>
+
+  <!-- TAB 0: PRODUCCIÓN -->
+  <div class="content active" id="tab0">
+    <div class="tipo-sel" id="tipo-sel" style="display:none">
+      <button class="tipo-btn active" id="btn-esq" onclick="setTipo('produccion',this)">Esquejes</button>
+      <button class="tipo-btn" id="btn-des" onclick="setTipo('despacho',this)">Despacho B→C</button>
+    </div>
+    <div class="search">
+      <span style="color:var(--texto-m);font-size:16px">&#9906;</span>
+      <input type="text" placeholder="Buscar planta..." oninput="filtrar(this.value,'prod')">
+    </div>
+    <div class="sec-label" id="prod-label">Esta semana</div>
+    <div id="list-prod"></div>
+    <button class="save-btn" id="btn-prod" onclick="guardar('produccion')" style="margin-top:16px">Guardar registro</button>
+  </div>
+
+  <!-- TAB 1: BOTADO -->
+  <div class="content" id="tab1">
+    <div class="search">
+      <span style="color:var(--texto-m);font-size:16px">&#9906;</span>
+      <input type="text" placeholder="Buscar planta..." oninput="filtrar(this.value,'bot')">
+    </div>
+    <div class="sec-label">Plantas botadas hoy</div>
+    <div id="list-bot"></div>
+    <button class="save-btn" id="btn-bot" onclick="guardar('botado')" style="margin-top:16px">Guardar botado</button>
+  </div>
+
+  <!-- TAB 2: RESUMEN -->
+  <div class="content" id="tab2">
+    <div class="stats">
+      <div class="stat verde">
+        <div class="stat-val" id="total-prod">0</div>
+        <div class="stat-lbl">Producidas</div>
+      </div>
+      <div class="stat naranja">
+        <div class="stat-val" id="total-bot">0</div>
+        <div class="stat-lbl">Botadas</div>
+      </div>
+    </div>
+    <div class="sec-label">Semana actual</div>
+    <div id="list-res"><div class="empty">Sin datos aún</div></div>
+  </div>
+</div>
+
+<!-- LOADING -->
+<div id="loading-screen" style="display:none" class="loading">
+  <div class="spinner">🌱</div>
+  <div style="margin-top:8px">Cargando...</div>
+</div>
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────────────────────────
+var API_URL = 'https://script.google.com/macros/s/AKfycbzSvOY51ES9cvoPhZZQz49qt-YaeRKWdtRfAmOZMDTeYaKaNcoaEU-W_mC57goqLUyxxQ/exec';
+
+var MOTIVOS_PROD = ['No aplica','Enfermedad','Plaga','Daño físico','Calidad baja','Otro'];
+var MOTIVOS_SEMI = ['No aplica','Enfermedad','Plaga','Murió en crecimiento','Daño físico','Otro'];
+
+// ── STATE ───────────────────────────────────────────────────────────────────
+var STATE = { email:'', usuario:null, plantas:[], semana:0, tipo:'produccion' };
+var vals = {};
+var valsBot = {};
+var motivosBot = {};
+
+// ── LOGIN ───────────────────────────────────────────────────────────────────
+function login() {
+  var email = document.getElementById('email-input').value.trim().toLowerCase();
+  if (!email) return;
+  showScreen('loading');
+  fetch(API_URL + '?action=getData&email=' + encodeURIComponent(email))
+    .then(function(r) { return r.json(); })
+    .then(function(data) { onData(data); })
+    .catch(function() { onError(); });
+}
+
+function onData(data) {
+  if (data.error) {
+    showScreen('login');
+    document.getElementById('login-error').style.display = 'block';
+    return;
+  }
+  STATE.email   = data.email;
+  STATE.usuario = data.usuario;
+  STATE.plantas = data.plantas;
+  STATE.semana  = data.semana;
+  vals = {}; valsBot = {}; motivosBot = {};
+
+  document.getElementById('sem-badge').textContent   = 'Sem ' + data.semana + ' · ' + data.anio;
+  document.getElementById('header-sub').textContent  = data.usuario.nombre + ' — Inv ' + data.usuario.inv;
+
+  if (data.usuario.rol === 'esquejes') {
+    document.getElementById('tipo-sel').style.display = 'flex';
+  }
+  if (data.usuario.rol === 'ventas') {
+    document.getElementById('tab-btn-0').textContent = 'Ventas';
+    document.getElementById('tab-btn-1').textContent = 'Botado';
+    document.getElementById('prod-label').textContent = 'Ventas esta semana';
+  }
+
+  renderLists(data.plantas);
+  renderResumen(data.resumen);
+  showScreen('app');
+}
+
+function onError() {
+  showScreen('login');
+  alert('Error de conexión. Verifica tu internet e intenta de nuevo.');
+}
+
+// ── RENDER ──────────────────────────────────────────────────────────────────
+function getMotivos() {
+  return STATE.usuario && STATE.usuario.inv === 'A' ? MOTIVOS_SEMI : MOTIVOS_PROD;
+}
+
+function buildProdCard(p) {
+  var isVentas = STATE.usuario && STATE.usuario.rol === 'ventas';
+  var lbl = isVentas ? 'Vendidas' : 'Producidas';
+  var val = vals[p.id] || '';
+  return '<div class="plant-card">' +
+    '<div class="plant-header"><div class="dot"></div><div class="pname">' + p.nombre + '</div></div>' +
+    '<div class="input-grid">' +
+    '<div class="input-group"><div class="input-label">' + lbl + '</div>' +
+    '<input class="qty" type="number" min="0" placeholder="0" inputmode="numeric" value="' + val + '" ' +
+    'oninput="vals[\'' + p.id + '\']=this.value"></div>' +
+    '</div></div>';
+}
+
+function buildBotCard(p) {
+  var val    = valsBot[p.id] || '';
+  var motivo = motivosBot[p.id] || 'No aplica';
+  var motivos = getMotivos();
+  var options = '';
+  for (var i = 0; i < motivos.length; i++) {
+    var sel = motivos[i] === motivo ? ' selected' : '';
+    options += '<option value="' + motivos[i] + '"' + sel + '>' + motivos[i] + '</option>';
+  }
+  return '<div class="plant-card">' +
+    '<div class="plant-header"><div class="dot rojo"></div><div class="pname">' + p.nombre + '</div></div>' +
+    '<div class="input-grid">' +
+    '<div class="input-group"><div class="input-label">Cantidad botada</div>' +
+    '<input class="qty" type="number" min="0" placeholder="0" inputmode="numeric" value="' + val + '" ' +
+    'oninput="valsBot[\'' + p.id + '\']=this.value"></div>' +
+    '</div>' +
+    '<div class="motivo-wrap"><div class="input-label" style="margin-bottom:4px">Motivo</div>' +
+    '<select class="motivo-select" onchange="motivosBot[\'' + p.id + '\']=this.value">' + options + '</select>' +
+    '</div></div>';
+}
+
+function renderLists(plantas) {
+  var htmlProd = '';
+  var htmlBot  = '';
+  for (var i = 0; i < plantas.length; i++) {
+    htmlProd += buildProdCard(plantas[i]);
+    htmlBot  += buildBotCard(plantas[i]);
+  }
+  document.getElementById('list-prod').innerHTML = htmlProd || '<div class="empty">Sin plantas</div>';
+  document.getElementById('list-bot').innerHTML  = htmlBot  || '<div class="empty">Sin plantas</div>';
+}
+
+function renderResumen(resumen) {
+  if (!resumen || !resumen.length) return;
+  var totProd = 0, totBot = 0;
+  for (var i = 0; i < resumen.length; i++) {
+    totProd += resumen[i].producidas;
+    totBot  += resumen[i].botadas;
+  }
+  document.getElementById('total-prod').textContent = totProd;
+  document.getElementById('total-bot').textContent  = totBot;
+  var labels = { ok:'✓ OK', alerta:'⚠ Revisar', exceso:'↑ Exceso' };
+  var html = '';
+  for (var j = 0; j < resumen.length; j++) {
+    var r = resumen[j];
+    html += '<div class="res-row">' +
+      '<div class="res-nombre">' + r.nombre + '</div>' +
+      '<div class="res-nums">' +
+      '<div class="nc"><div class="nv">' + r.producidas + '</div><div class="nl">prod.</div></div>' +
+      '<div class="nc"><div class="nv">' + r.botadas + '</div><div class="nl">bot.</div></div>' +
+      '<span class="chip ' + r.estado + '">' + labels[r.estado] + '</span>' +
+      '</div></div>';
+  }
+  document.getElementById('list-res').innerHTML = html;
+}
+
+// ── FILTRAR ──────────────────────────────────────────────────────────────────
+function filtrar(v, lista) {
+  var plantas = STATE.plantas;
+  if (v) {
+    var filtered = [];
+    for (var i = 0; i < plantas.length; i++) {
+      if (plantas[i].nombre.toLowerCase().indexOf(v.toLowerCase()) !== -1) {
+        filtered.push(plantas[i]);
+      }
+    }
+    plantas = filtered;
+  }
+  var html = '';
+  for (var j = 0; j < plantas.length; j++) {
+    html += lista === 'prod' ? buildProdCard(plantas[j]) : buildBotCard(plantas[j]);
+  }
+  document.getElementById(lista === 'prod' ? 'list-prod' : 'list-bot').innerHTML =
+    html || '<div class="empty">Sin resultados</div>';
+}
+
+// ── GUARDAR ──────────────────────────────────────────────────────────────────
+function guardar(tipo) {
+  var entries = [];
+  var plantas = STATE.plantas;
+
+  for (var i = 0; i < plantas.length; i++) {
+    var p = plantas[i];
+    if (tipo === 'botado') {
+      var q = parseInt(valsBot[p.id]) || 0;
+      if (q > 0) {
+        entries.push({
+          variedad_id:    p.id,
+          variedad_nombre: p.nombre,
+          qty_botada:     q,
+          motivo_botado:  motivosBot[p.id] || 'No aplica'
+        });
+      }
+    } else {
+      var qp = parseInt(vals[p.id]) || 0;
+      if (qp > 0) {
+        entries.push({
+          variedad_id:    p.id,
+          variedad_nombre: p.nombre,
+          qty_producida:  qp,
+          qty_vendida:    qp
+        });
+      }
+    }
+  }
+
+  if (!entries.length) { alert('No hay cantidades para guardar.'); return; }
+
+  var btnId = tipo === 'botado' ? 'btn-bot' : 'btn-prod';
+  var btn   = document.getElementById(btnId);
+  btn.textContent = 'Guardando...';
+  btn.disabled    = true;
+
+  var tipoFinal = STATE.usuario.rol === 'ventas' ? 'venta' :
+    (STATE.tipo === 'despacho' ? 'despacho' : (tipo === 'botado' ? 'botado' : 'produccion'));
+
+  fetch(API_URL, {
+    method:  'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body:    JSON.stringify({ email: STATE.email, tipo: tipoFinal, entries: entries })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(result) {
+    if (result.ok) {
+      btn.textContent = '✓ Guardado';
+      btn.classList.add('saved');
+      if (tipo === 'botado') { valsBot = {}; motivosBot = {}; } else { vals = {}; }
+      renderLists(STATE.plantas);
+      setTimeout(function() {
+        btn.textContent = tipo === 'botado' ? 'Guardar botado' : 'Guardar registro';
+        btn.classList.remove('saved');
+        btn.disabled = false;
+      }, 2000);
+    } else {
+      btn.textContent = 'Error — reintentar';
+      btn.disabled    = false;
+    }
+  })
+  .catch(function() {
+    btn.textContent = 'Error — reintentar';
+    btn.disabled    = false;
+  });
+}
+
+// ── UI HELPERS ───────────────────────────────────────────────────────────────
+function showTab(i) {
+  for (var j = 0; j < 3; j++) {
+    document.getElementById('tab' + j).classList.toggle('active', i === j);
+    document.getElementById('tab-btn-' + j).classList.toggle('active', i === j);
+  }
+}
+
+function setTipo(t) {
+  STATE.tipo = t;
+  document.getElementById('btn-esq').classList.toggle('active', t === 'produccion');
+  document.getElementById('btn-des').classList.toggle('active', t === 'despacho');
+}
+
+function showScreen(s) {
+  document.getElementById('login-screen').style.display   = s === 'login'   ? 'block' : 'none';
+  document.getElementById('app-screen').style.display     = s === 'app'     ? 'block' : 'none';
+  document.getElementById('loading-screen').style.display = s === 'loading' ? 'block' : 'none';
+}
+</script>
+</body>
+</html>
